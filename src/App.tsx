@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Header } from './components/Header';
 import { ImageIngestion } from './components/ImageIngestion';
 import { ArtworkCanvas } from './components/ArtworkCanvas';
 import { AnalysisPanel } from './components/AnalysisPanel';
-import { PythonServerModal } from './components/PythonServerModal';
 import { PredictionResponse, SampleArtwork, ServerConfig } from './types';
 import { SAMPLE_ARTWORKS, ART_MOVEMENTS } from './data/artMovements';
 import { generateClientGradCam } from './utils/gradCamHelper';
@@ -227,37 +225,6 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#FAF9F6] text-[#1A1C1A] flex flex-col font-sans selection:bg-[#B44C33]/20 selection:text-[#B44C33]">
       
-      {/* Barra de Navegación / Cabecera Curatorial */}
-      <Header
-        config={serverConfig}
-        onRefreshServer={checkServer}
-        onUpdateServerUrl={(newUrl) =>
-          setServerConfig((prev) => ({ ...prev, baseUrl: newUrl }))
-        }
-        onOpenCodeModal={() => setIsCodeModalOpen(true)}
-      />
-
-      {/* Banner Informativo si el Servidor Local aún no está corriendo */}
-      {!serverConfig.isConnected && (
-        <div className="bg-[#FAF8F3] border-b border-[#E8E5DF] py-2 px-4 text-xs text-[#706B64]">
-          <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 flex-wrap">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#B44C33]" />
-              <span>
-                <strong className="text-[#24201E]">Modo de Vista Previa Curatorial:</strong> Puedes interactuar con la interfaz y probar las 4 clases con Grad-CAM. Para conectar tu red neuronal en vivo, ejecuta tu script de Python en tu PC: <code className="bg-[#E8E5DF] px-1 py-0.5 rounded text-[#24201E]">python server.py</code>.
-              </span>
-            </div>
-            <button
-              onClick={() => setIsCodeModalOpen(true)}
-              className="text-[#B44C33] hover:underline font-semibold flex items-center gap-1 shrink-0"
-            >
-              <Terminal className="w-3 h-3" />
-              <span>Ver comando & código</span>
-            </button>
-          </div>
-        </div>
-      )}
-
       {/* Contenedor Principal */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
         
@@ -310,13 +277,6 @@ export default function App() {
           </div>
         </div>
       </footer>
-
-      {/* Modal con Código Python FastAPI y requirements.txt */}
-      <PythonServerModal
-        isOpen={isCodeModalOpen}
-        onClose={() => setIsCodeModalOpen(false)}
-      />
-
     </div>
   );
 }
