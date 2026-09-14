@@ -1,0 +1,6 @@
+{
+  "name": "Clasificador de Arte CNN",
+  "description": "Plataforma curatorial para clasificar movimientos artísticos conectada a servidor CNN en Python.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
