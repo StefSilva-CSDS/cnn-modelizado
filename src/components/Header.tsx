@@ -50,12 +50,12 @@ export const Header: React.FC<Props> = ({
             <span className="bg-[#F4F2EC] px-1.5 py-0.5 rounded text-[#24201E]">Impresionismo</span>
           </div>
 
-          <ServerStatusBadge
+          {/* <ServerStatusBadge
             config={config}
             onRefresh={onRefreshServer}
             onUpdateUrl={onUpdateServerUrl}
             onOpenCodeModal={onOpenCodeModal}
-          />
+          /> */}
         </div>
       </div>
     </header>
