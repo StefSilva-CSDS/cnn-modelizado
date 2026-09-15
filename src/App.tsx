@@ -10,7 +10,7 @@ import { AlertCircle, CheckCircle2, Sparkles, Terminal } from 'lucide-react';
 
 export default function App() {
   const [serverConfig, setServerConfig] = useState<ServerConfig>({
-    baseUrl: 'http://127.0.0.1:8000',
+    baseUrl: 'https://cnn-back.onrender.com',
     isConnected: false,
     isChecking: false
   });
