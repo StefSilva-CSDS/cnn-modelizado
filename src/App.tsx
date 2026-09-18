@@ -9,6 +9,7 @@ import { generateClientGradCam } from './utils/gradCamHelper';
 import { AlertCircle, CheckCircle2, Sparkles, Terminal } from 'lucide-react';
 
 export default function App() {
+  
     const [serverConfig, setServerConfig] = useState<ServerConfig>({
     baseUrl: 'https://antacid-subsonic-happier.ngrok-free.dev',
     isConnected: false,
@@ -16,8 +17,8 @@ export default function App() {
   });
 
   // Obra inicial seleccionada (Expresionismo de Kirchner / Munch / Marc)
-  const [currentImage, setCurrentImage] = useState<string>(SAMPLE_ARTWORKS[0].imageUrl);
-  const [activeSample, setActiveSample] = useState<SampleArtwork | null>(SAMPLE_ARTWORKS[0]);
+  const [currentImage, setCurrentImage] = useState<string>(SAMPLE_ARTWORKS[2].imageUrl);
+  const [activeSample, setActiveSample] = useState<SampleArtwork | null>(SAMPLE_ARTWORKS[2]);
   const [currentFile, setCurrentFile] = useState<File | null>(null);
 
   // Estados de inferencia y Grad-CAM
