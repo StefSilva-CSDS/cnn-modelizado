@@ -9,8 +9,6 @@ import { generateClientGradCam } from './utils/gradCamHelper';
 import { AlertCircle, CheckCircle2, Sparkles, Terminal } from 'lucide-react';
 
 export default function App() {
-
-
     const [serverConfig, setServerConfig] = useState<ServerConfig>({
     baseUrl: 'https://antacid-subsonic-happier.ngrok-free.dev',
     isConnected: false,
@@ -29,7 +27,7 @@ export default function App() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Modal para ver el código Python
-  const [isCodeModalOpen, setIsCodeModalOpen] = useState<boolean>(false);
+  //const [isCodeModalOpen, setIsCodeModalOpen] = useState<boolean>(false);
 
   // Comprobación de estado del servidor FastAPI local
   const checkServer = useCallback(async () => {
@@ -230,21 +228,6 @@ export default function App() {
       
       {/* Barra de Navegación / Cabecera Curatorial */}
       <Header/>
-
-      {/* Banner Informativo si el Servidor Local aún no está corriendo */}
-      {/* {!serverConfig.isConnected && (
-        <div className="bg-[#FAF8F3] border-b border-[#E8E5DF] py-2 px-4 text-xs text-[#706B64]">
-          <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 flex-wrap">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#B44C33]" />
-              <span>
-                <strong className="text-[#24201E]">Modo de Vista Previa Curatorial:</strong> Puedes interactuar con la interfaz y probar las 4 clases con Grad-CAM. Para conectar tu red neuronal en vivo, ejecuta tu script de Python en tu PC: <code className="bg-[#E8E5DF] px-1 py-0.5 rounded text-[#24201E]">python server.py</code>.
-              </span>
-            </div>
-
-          </div>
-        </div>
-      )} */}
 
       {/* Contenedor Principal */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">

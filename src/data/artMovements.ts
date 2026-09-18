@@ -43,27 +43,6 @@ export const ART_MOVEMENTS: Record<string, ArtMovementInfo> = {
     description: 'Revolución radical que deconstruyó el espacio clásico para representar objetos no como los percibe el ojo desde un ángulo estático, sino como los concibe la mente desde múltiples puntos de vista simultáneos.',
     paletteColors: ['#6B5B4D', '#A89F91', '#4A4E4D', '#D1C7B7', '#2B2B28']
   },
- /*  Expressionism: {
-    id: 'Expressionism',
-    name: 'Expresionismo',
-    label: 'Expresionismo',
-    era: 'Vanguardias de Entreguerras (c. 1905 - 1930)',
-    periodYears: '1905 – 1930',
-    keyArtists: ['Ernst Ludwig Kirchner', 'Edvard Munch', 'Franz Marc', 'Egon Schiele', 'Wassily Kandinsky', 'Emil Nolde'],
-    characteristics: [
-      'Colores antinaturales, estridentes y saturados con valor psicológico',
-      'Pincelada violenta, matérica y deliberadamente áspera',
-      'Deformación emocional de figuras, rostros y paisajes',
-      'Temáticas de angustia existencial, éxtasis espiritual, aislamiento y tensión'
-    ],
-    techniques: [
-      'Empaste denso ("impasto") aplicado con espátula y pincel grueso',
-      'Contornos angulosos y quebrados que desafían la anatomía estricta',
-      'Contraste cromático disonante (naranjas incandescentes frente a azules nocturnos)'
-    ],
-    description: 'Corriente primordialmente germánica que primó la expresión visceral de los estados emocionales subjetivos sobre la reproducción fidedigna de la realidad exterior.',
-    paletteColors: ['#B83A1B', '#1E355B', '#E07A28', '#2C5E3B', '#141414']
-  }, */
   Impressionism: {
     id: 'Impressionism',
     name: 'Impresionismo',
