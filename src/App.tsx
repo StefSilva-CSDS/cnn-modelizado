@@ -9,16 +9,10 @@ import { generateClientGradCam } from './utils/gradCamHelper';
 import { AlertCircle, CheckCircle2, Sparkles, Terminal } from 'lucide-react';
 
 export default function App() {
-<<<<<<< Updated upstream
-  const [serverConfig, setServerConfig] = useState<ServerConfig>({
-   // baseUrl: 'https://cnn-back.onrender.com',
-    baseUrl: 'https://127.0.0.1:8000',
-=======
 
 
     const [serverConfig, setServerConfig] = useState<ServerConfig>({
     baseUrl: 'https://antacid-subsonic-happier.ngrok-free.dev',
->>>>>>> Stashed changes
     isConnected: false,
     isChecking: false
   });
