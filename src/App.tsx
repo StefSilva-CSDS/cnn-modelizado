@@ -9,16 +9,23 @@ import { generateClientGradCam } from './utils/gradCamHelper';
 import { AlertCircle, CheckCircle2, Sparkles, Terminal } from 'lucide-react';
 
 export default function App() {
+<<<<<<< Updated upstream
   const [serverConfig, setServerConfig] = useState<ServerConfig>({
    // baseUrl: 'https://cnn-back.onrender.com',
     baseUrl: 'https://127.0.0.1:8000',
+=======
+
+
+    const [serverConfig, setServerConfig] = useState<ServerConfig>({
+    baseUrl: 'https://antacid-subsonic-happier.ngrok-free.dev',
+>>>>>>> Stashed changes
     isConnected: false,
     isChecking: false
   });
 
   // Obra inicial seleccionada (Expresionismo de Kirchner / Munch / Marc)
-  const [currentImage, setCurrentImage] = useState<string>(SAMPLE_ARTWORKS[0].imageUrl);
-  const [activeSample, setActiveSample] = useState<SampleArtwork | null>(SAMPLE_ARTWORKS[0]);
+  const [currentImage, setCurrentImage] = useState<string>(SAMPLE_ARTWORKS[1].imageUrl);
+  const [activeSample, setActiveSample] = useState<SampleArtwork | null>(SAMPLE_ARTWORKS[1]);
   const [currentFile, setCurrentFile] = useState<File | null>(null);
 
   // Estados de inferencia y Grad-CAM
@@ -292,8 +299,7 @@ export default function App() {
           <div className="flex items-center gap-4 text-[11px]">
             <span>1. Art Nouveau / Modern</span>
             <span>2. Cubismo</span>
-            <span>3. Expresionismo</span>
-            <span>4. Impresionismo</span>
+            <span>3. Impresionismo</span>
           </div>
         </div>
       </footer>

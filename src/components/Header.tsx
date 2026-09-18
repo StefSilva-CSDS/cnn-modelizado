@@ -35,10 +35,9 @@ export const Header = ({
         {/* 4 Clases Disponibles & Widget de Servidor */}
         <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
           <div className="hidden lg:flex items-center gap-1.5 text-[11px] text-[#706B64] border-r border-[#E8E5DF] pr-4">
-            <span className="font-semibold text-[#24201E]">4 Clases:</span>
+            <span className="font-semibold text-[#24201E]">3 Clases:</span>
             <span className="bg-[#F4F2EC] px-1.5 py-0.5 rounded text-[#24201E]">Art Nouveau</span>
             <span className="bg-[#F4F2EC] px-1.5 py-0.5 rounded text-[#24201E]">Cubismo</span>
-            <span className="bg-[#F4F2EC] px-1.5 py-0.5 rounded text-[#24201E]">Expresionismo</span>
             <span className="bg-[#F4F2EC] px-1.5 py-0.5 rounded text-[#24201E]">Impresionismo</span>
           </div>
 

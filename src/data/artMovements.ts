@@ -43,7 +43,7 @@ export const ART_MOVEMENTS: Record<string, ArtMovementInfo> = {
     description: 'Revolución radical que deconstruyó el espacio clásico para representar objetos no como los percibe el ojo desde un ángulo estático, sino como los concibe la mente desde múltiples puntos de vista simultáneos.',
     paletteColors: ['#6B5B4D', '#A89F91', '#4A4E4D', '#D1C7B7', '#2B2B28']
   },
-  Expressionism: {
+ /*  Expressionism: {
     id: 'Expressionism',
     name: 'Expresionismo',
     label: 'Expresionismo',
@@ -63,7 +63,7 @@ export const ART_MOVEMENTS: Record<string, ArtMovementInfo> = {
     ],
     description: 'Corriente primordialmente germánica que primó la expresión visceral de los estados emocionales subjetivos sobre la reproducción fidedigna de la realidad exterior.',
     paletteColors: ['#B83A1B', '#1E355B', '#E07A28', '#2C5E3B', '#141414']
-  },
+  }, */
   Impressionism: {
     id: 'Impressionism',
     name: 'Impresionismo',
