@@ -6,12 +6,22 @@ import { AnalysisPanel } from './components/AnalysisPanel';
 import { PredictionResponse, SampleArtwork, ServerConfig } from './types';
 import { SAMPLE_ARTWORKS, ART_MOVEMENTS } from './data/artMovements';
 import { generateClientGradCam } from './utils/gradCamHelper';
+import { generateClientGradCam } from './utils/gradCamHelper';
 import { AlertCircle, CheckCircle2, Sparkles, Terminal } from 'lucide-react';
 
+const DEFAULT_SERVER_BASE_URL =
+  (import.meta.env.VITE_API_BASE_URL as string | undefined)?.trim().replace(/\/+$/, '') ||
+  'http://127.0.0.1:8085';
+
+const NGROK_HEADERS = {
+  'ngrok-skip-browser-warning': 'true'
+};
+
+const normalizeServerUrl = (url: string) => url.trim().replace(/\/+$/, '');
+
 export default function App() {
-  
-    const [serverConfig, setServerConfig] = useState<ServerConfig>({
-    baseUrl: 'https://antacid-subsonic-happier.ngrok-free.dev',
+  const [serverConfig, setServerConfig] = useState<ServerConfig>({
+    baseUrl: DEFAULT_SERVER_BASE_URL,
     isConnected: false,
     isChecking: false
   });
@@ -34,9 +44,11 @@ export default function App() {
   const checkServer = useCallback(async () => {
     setServerConfig((prev) => ({ ...prev, isChecking: true }));
     try {
+
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 2000);
       const res = await fetch(`${serverConfig.baseUrl}/`, {
+        headers: NGROK_HEADERS,
         signal: controller.signal
       });
       clearTimeout(timeoutId);
@@ -89,19 +101,25 @@ export default function App() {
 
         if (fileObj) {
           // Envío multipart desde PC (optimizado en memoria)
+
           const formData = new FormData();
           formData.append('file', fileObj);
           const res = await fetch(`${serverConfig.baseUrl}/predict`, {
             method: 'POST',
+            headers: NGROK_HEADERS,
             body: formData
           });
+
           if (!res.ok) throw new Error(`Error en servidor: ${res.statusText}`);
           responseData = await res.json();
         } else {
           // Envío de URL directa
-          const res = await fetch(`${serverConfig.baseUrl}/predict-url`, {
+           const res = await fetch(`${serverConfig.baseUrl}/predict-url`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+              ...NGROK_HEADERS,
+              'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ url: imgUrl })
           });
           if (!res.ok) throw new Error(`Error en servidor: ${res.statusText}`);
@@ -135,9 +153,8 @@ export default function App() {
 
       // Distribución sintética de probabilidades en las 4 clases
       const probs: Record<string, number> = {
-        Art_Nouveau_Modern: 0.04,
-        Cubism: 0.03,
-        Expressionism: 0.02,
+        Art_Nouveau_Modern: 0.03,
+        Cubism: 0.02,
         Impressionism: 0.01
       };
       probs[targetMovement] = 0.90 + Math.random() * 0.07;
@@ -229,7 +246,6 @@ export default function App() {
       
       {/* Barra de Navegación / Cabecera Curatorial */}
       <Header/>
-
       {/* Contenedor Principal */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
         
