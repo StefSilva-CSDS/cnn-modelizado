@@ -18,8 +18,8 @@ export default function App() {
   });
 
   // Obra inicial seleccionada (Expresionismo de Kirchner / Munch / Marc)
-  const [currentImage, setCurrentImage] = useState<string>(SAMPLE_ARTWORKS[1].imageUrl);
-  const [activeSample, setActiveSample] = useState<SampleArtwork | null>(SAMPLE_ARTWORKS[1]);
+  const [currentImage, setCurrentImage] = useState<string>(SAMPLE_ARTWORKS[0].imageUrl);
+  const [activeSample, setActiveSample] = useState<SampleArtwork | null>(SAMPLE_ARTWORKS[0]);
   const [currentFile, setCurrentFile] = useState<File | null>(null);
 
   // Estados de inferencia y Grad-CAM

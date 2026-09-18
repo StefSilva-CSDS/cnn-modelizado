@@ -88,17 +88,7 @@ export const ART_MOVEMENTS: Record<string, ArtMovementInfo> = {
 };
 
 export const SAMPLE_ARTWORKS: SampleArtwork[] = [
-  {
-    id: 'kirchner-munch-marc-angst',
-    title: 'Paisaje con Caballos (Angst and Ecstasy)',
-    artists: 'Ernst Ludwig Kirchner, Edvard Munch, Franz Marc',
-    year: 'c. 1915',
-    movementId: 'Expressionism',
-    movementLabel: 'Expresionismo',
-    imageUrl: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1000&auto=format&fit=crop',
-    description: 'Obra arquetípica del expresionismo con pinceladas en remolino, contrastes ardientes de bermellón y cerúleo, y figuras zoomórficas imbuidas de tensión psicológica.',
-    institution: 'Colección de Referencia'
-  },
+
   {
     id: 'picasso-braque-cubism',
     title: 'Naturaleza Muerta con Frutero y Violín',
