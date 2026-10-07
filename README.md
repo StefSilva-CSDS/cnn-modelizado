@@ -1,20 +1,56 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)        ┃ Output Shape      ┃    Param # ┃ Connected to      ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━┩
+│ img_global          │ (None, 384, 384,  │          0 │ -                 │
+│ (InputLayer)        │ 3)                │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ img_patch           │ (None, 224, 224,  │          0 │ -                 │
+│ (InputLayer)        │ 3)                │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ convnext_base       │ (None, 12, 12,    │ 87,566,464 │ img_global[0][0]  │
+│ (Functional)        │ 1024)             │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ efficientnetv2-s    │ (None, 7, 7,      │ 20,331,360 │ img_patch[0][0]   │
+│ (Functional)        │ 1280)             │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ color_hist          │ (None, 68)        │          0 │ -                 │
+│ (InputLayer)        │                   │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ global_average_poo… │ (None, 1024)      │          0 │ convnext_base[0]… │
+│ (GlobalAveragePool… │                   │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ global_average_poo… │ (None, 1280)      │          0 │ efficientnetv2-s… │
+│ (GlobalAveragePool… │                   │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dense_2 (Dense)     │ (None, 128)       │      8,832 │ color_hist[0][0]  │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dense (Dense)       │ (None, 512)       │    524,800 │ global_average_p… │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dense_1 (Dense)     │ (None, 256)       │    327,936 │ global_average_p… │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dense_3 (Dense)     │ (None, 64)        │      8,256 │ dense_2[0][0]     │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ concatenate         │ (None, 832)       │          0 │ dense[0][0],      │
+│ (Concatenate)       │                   │            │ dense_1[0][0],    │
+│                     │                   │            │ dense_3[0][0]     │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dense_4 (Dense)     │ (None, 512)       │    426,496 │ concatenate[0][0] │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dropout (Dropout)   │ (None, 512)       │          0 │ dense_4[0][0]     │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dense_5 (Dense)     │ (None, 256)       │    131,328 │ dropout[0][0]     │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dropout_1 (Dropout) │ (None, 256)       │          0 │ dense_5[0][0]     │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ art_movement_output │ (None, 3)         │        771 │ dropout_1[0][0]   │
+│ (Dense)             │                   │            │                   │
+└─────────────────────┴───────────────────┴────────────┴───────────────────┘
+ Total params: 109,326,243 (417.05 MB)
+ Trainable params: 1,428,419 (5.45 MB)
+ Non-trainable params: 107,897,824 (411.60 MB)
 
-# Run and deploy your AI Studio app
-
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/40167b66-22ce-43b9-9758-2cb66656f5f5
-
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+ 
+📊 Evaluando modelo final en Test Set...
+Test Loss Final: 0.4819
+Test Accuracy Final: 89.78%
+<img width="668" height="252" alt="{33EF12C2-9ACF-420A-84B5-572F974A0D87}" src="https://github.com/user-attachments/assets/8c5c00dd-b989-4f46-9280-6b164197856b" />
